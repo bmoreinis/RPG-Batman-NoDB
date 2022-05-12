@@ -9,6 +9,9 @@ function checkAnswers(answer) {
     case "Keep":
       keep();
       break;
+    case "Reroll":
+      reroll();
+      break;
     case "Think some more":
       thinkSomeMore();
       break;
@@ -51,6 +54,13 @@ function picker(){
   choices = classes.slice();
   answer = setOptions(choices);
 }
+
+function reroll(){
+  story("You rolled a 15 for strength. You have 2 rerolls left.");
+  choices = ["Keep","Reroll"];
+  answer = setOptions(choices);
+}
+
 
 function town(){
   // var name = prompt("what is your name?");
