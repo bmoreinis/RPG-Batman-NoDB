@@ -3,7 +3,7 @@
 var attributes = [["Strength",0],["Intelligence",0],["Wisdom",0],["Constitution",0],["Dexterity",0],["Charisma",0]];
 // classReq = attributes[index], minimum value to qualify, classes[index]
 var classReq = [[0,11,0],[1,11,1],[2,11,2],[3,11,3],[4,11,4],[5,11,5]];
-var classes = [["Christian Bale",["Batman Begins","The Dark Night"],"One Punch Knockout"],[]];
+var classes = [["Christian Bale","Batman Begins and The Dark Night","One Punch Knockout"],[]];
 var choices = [];
 var whichAttribute = 0; // Which one are we on?
 var maxRolls = 3; // how many rerolls? Default = 3
