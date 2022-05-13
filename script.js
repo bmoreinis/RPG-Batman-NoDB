@@ -143,7 +143,7 @@ function classOptions(){
   let strengthRoll = attributes[0][1];
   let minRoll = 11; //We are saying that minRoll is 11 according to the current airTable database, will be subject to change;
   //for (let att6 = 0; att6 < attributes.length; att6++ ){
-  for (let att6 = 0; att6 < 1; att6++ ){
+  for (let att6 = 0; att6 < attributes.length; att6++ ){
     if (attributes[att6][1] >= classReq[att6][1]){
       choices.push(classes[classReq[att6][2]][0]);
     }
