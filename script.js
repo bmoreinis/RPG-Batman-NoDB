@@ -1,18 +1,3 @@
-/* Global Variables */
-// attributes = attribute, current value
-var attributes = [["Strength",0],["Intelligence",0],["Wisdom",0],["Constitution",0],["Dexterity",0],["Charisma",0]];
-// classReq = attributes[index], minimum value to qualify, classes[index]
-var classReq = [[0,11,0],[1,11,1],[2,11,2],[3,11,3],[4,11,4],[5,11,5]];
-var classes = [["Christian Bale",["Batman Begins, The Dark Night"],"One Punch Knockout"],[]];
-var classReq = [[0,13,0],[1,14,1],[2,9,2],[3,11,3],[4,10,4],[5,12,5]];
-var classes = [["Christian Bale",["Batman Begins", "The Dark Night"],"One Punch Knockout"],["Robert Pattinson",["The Batman 2020"],"Knows All The Answers"],["Michael Keaton",["Batman 1989"],"Predicts Villain Behaviors"],["Will Arnett",["Lego Batman: The Movie"],"No Fall Damage"],["Ben Affleck",["Batman vs. Superman"],"Can Escape Any Room"],["Kevin Conroy",["Batman: The Killing Joke"],"Soul Catching Voice"]];
-var choices = [];
-var whichAttribute = 0; // Which one are we on?
-var maxRolls = 3; // how many rerolls? Default = 3
-var rollCount = 0; // which reroll are we on?
-var rollButton = document.getElementById("rerolls");
-rollButton.innerText = "Reroll 0 of "+maxRolls;
-
 /* Function pickAttribute
  * Rolls dice for an attribute and populates page. No save.
  * @param none
@@ -32,7 +17,7 @@ function pickAttribute(){
  * @param none
  * @return none
  */
-function keep(){
+function keepOld(){
   if (rollCount > maxRolls){
       rollButton.innerText = "No Rerolls Left";
   }
