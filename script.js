@@ -2,8 +2,8 @@
 // attributes = attribute, current value
 var attributes = [["Strength",0],["Intelligence",0],["Wisdom",0],["Constitution",0],["Dexterity",0],["Charisma",0]];
 // classReq = attributes[index], minimum value to qualify, classes[index]
-var classReq = [[0,13,0],[1,14,1],[2,9,2],[3,11,3],[4,10,4],[5,12,5]];
-var classes = [["Christian Bale",["Batman Begins", "The Dark Night"],"One Punch Knockout"],["Robert Pattinson","The Batman 2020","Knows All The Answers"],["Michael Keaton","Batman 1989","Predicts Villain Behaviors"],["Will Arnett","Lego Batman: The Movie","No Fall Damage"],["Ben Affleck","Batman vs. Superman","He Can Escape Any Room"],["Kevin Conroy","Batman: The Killing Joke","Soul Catching Voice"]];
+var classReq = [[0,11,0],[1,11,1],[2,11,2],[3,11,3],[4,11,4],[5,11,5]];
+var classes = [["Christian Bale","Batman Begins and The Dark Night","One Punch Knockout"],[]];
 var choices = [];
 var whichAttribute = 0; // Which one are we on?
 var maxRolls = 3; // how many rerolls? Default = 3
@@ -143,7 +143,7 @@ function classOptions(){
   //for (let att6 = 0; att6 < attributes.length; att6++ ){
   for (let att6 = 0; att6 < 1; att6++ ){
     if (attributes[att6][1] >= classReq[att6][1]){
-      choices.push(classes[classReq[att6][2][0]]);
+      choices.push(classes[classReq[att6][2]][0]);
     }
   }
   alert("You could be: "+JSON.stringify(choices));
