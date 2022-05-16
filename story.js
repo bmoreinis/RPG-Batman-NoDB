@@ -18,8 +18,6 @@ var choices = [];
 var maxRolls = 3; // how many rerolls? Default = 3
 var rollCount = 0; // which reroll are we on?
 
-
-
 function checkAnswers(answer) {
   switch(answer) {
     case "Keep":
@@ -28,43 +26,39 @@ function checkAnswers(answer) {
     case "Reroll":
       reroll();
       break;
-    case "Next Attribute":
+    /* case "Next Attribute":
       next();
-      break;
-    case "Start Over":
+      break;*/
+    /* case "Start Over":
       restart();
-      break;
-    case "Think some more":
-      thinkSomeMore();
-      break;
-    case "Go into the forest":
-      forest();
-      break;
-    case "Ignore it and go home":
-      homeEarly();
-      break;
-    case "Knock on door":
-      houseKnock();
-      break;
-    case "Buy fruit":
-      fruitKnock();
-      break;
-    case "Enter glade":
-      gladeKnock();
-      break;
-    case "Listen":
-      knockKnockGod();
-      break;
+      break;*/
     }
 }
 
 function roller(){
   roll = random();
   attribute = attributes[whichAttribute][0];
-  story("You rolled a "+roll+" for "+attributes[whichAttribute][0]+".");
+  story("You rolled a "+roll+" for "+attribute+".");
   choices = ["Keep", "Reroll"];
   answer = setOptions(choices);
 }
+
+
+/* Function Keep
+ * Pulls dice roll value from page to save in array.
+ * Then rolls next attribute. 
+ * @param none
+ * @return random integer 3 to 18
+ */
+function random(){
+  let sum = 0;
+  for (let roll = 1; roll <= 3; roll ++){
+    let rolled = Math.floor(Math.random()*6)+1;
+    sum += rolled;
+  }
+  return sum;
+}
+
 
 function keep(){
   let add2Story = "Your "+attribute+" is now "+roll+".\n<br>";
@@ -80,13 +74,14 @@ function keep(){
 
 function reroll(){
   rollCount++;
-  roll = random();
   let rollsLeft = maxRolls - rollCount;
-  story("You rolled a "+roll+" for "+attribute+". You have "+rollsLeft+" rerolls left.");
   if (rollsLeft<1){
+    story("You have no rerolls left.  Select KEEP.");
     choices = ["Keep","No Rerolls Left"];
   }
   else {
+    roll = random();
+    story("You rolled a "+roll+" for "+attribute+". You have "+rollsLeft+" rerolls left.");
     choices = ["Keep","Reroll"];
   }
   answer = setOptions(choices);
@@ -102,76 +97,4 @@ function reStart(){
   story("Sorry, you don't get to keep restarting until you get great rolls!");
   choices = ["Go into the forest", "Ignore it and go home"];
   answer = setOptions(choices);
-}
-function town(){
-  // var name = prompt("what is your name?");
-  story("One day you are on your way home from school and you hear a whisper coming from a dark forest you never remember seeing before.\
-  \n\"Come here Come here!\"\
-  \nit says. You can't place the voice, but there is something familiar about it. What do you do?");
-  choices = ["Think some more", "Go into the forest", "Ignore it and go home"];
-  answer = setOptions(choices);
-}
-
-// Places
-function thinkSomeMore() {
-  story("You think about it some more and are sure this forest was not here yesterday.  \
-  \nWhere did it come from and how does it know your name?\
-  \nWhat do you want to do?");
-  choices = ["Go into the forest", "Ignore it and go home"];
-  answer = setOptions(choices);
-}
-
-
-function forest() {
-  addImage("https://www.weprepper.com/wp-content/uploads/2018/07/nature-2569214_960_720-1280x720.jpg");
-  story("You enter the forest and soon become hopefully lost.\
-  \nWhile you can't find your way out you do see a few places of interest.\
-  \nThere is a house made of candy.\
-  \nThere is a fruit vender.\
-  \nThere is a small opening in the trees with a ring of mushroom in the middle.");
-  choices = ["Knock on door","Buy fruit", "Enter glade"];
-  answer = setOptions(choices);
-}
-
-function homeEarly() {
-  var messages = ['You ignore it and walk home.',
-    'Nothing exciting happens to you one the way.',
-    "That was a very boring story, but you must be a boring person for having chosen to go home.",
-    "If it was me there is no way I am passing up the chance to check out a new forest that just happens over night.",
-    "To each his own I guess."
-  ];
-  delayText(messages, 1000);
-}
-
-function houseKnock() {
-  addImage("https://recipes.net/wp-content/uploads/2020/10/hauntedgingerbreadhouserecipe.jpg");
-  knockKnock();
-}
-
-function fruitKnock() {
-  addImage("https://img.freepik.com/free-photo/waist-up-portrait-bearded-man-wearing-apron-smiling-while-selling-fresh-fruit-vegetable-farmers-market_236854-22932.jpg");
-  knockKnock();
-}
-
-function gladeKnock() {
-  addImage("https://cdn3.vectorstock.com/i/1000x1000/43/42/glade-in-magic-forest-vector-2474342.jpg");
-  knockKnock();
-}
-
-function knockKnock(){
-  story("You hear a loud voice that seems to come from the sky.");
-  choices = ["Listen"];
-  answer = setOptions(choices);
-}
-
-function knockKnockGod(){
-  var response = prompt("Knock knock!");
-  if (response != "Who's there?") {
-    alert("You were supposed to say \"Who\'s there?\"");
-    knockKnock();
-  }
-  else {
-    prompt("Nobel");
-    alert("No bell. That's why I knocked!");
-  }
 }

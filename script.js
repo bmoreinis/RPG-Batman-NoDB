@@ -39,7 +39,7 @@ function keepOld(){
  * @param none
  * @return random integer 3 to 18
  */
-function random(){
+function randomOLD(){
   let sum = 0;
   for (let roll = 1; roll <= 3; roll ++){
     let rolled = Math.floor(Math.random()*6)+1;
