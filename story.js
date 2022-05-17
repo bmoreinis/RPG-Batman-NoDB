@@ -160,6 +160,7 @@ function classOptions(){
 
 function hideModal() {
   let statsBox = document.getElementById("modalBox");
+  statsBox.removeChild(statsBox.lastChild);
   statsBox.style.display = "none";
 }
 
