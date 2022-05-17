@@ -100,12 +100,6 @@ function reroll(){
   answer = setOptions(choices);
 }
 
-function picker(){
-  story("");
-  choices = classes.slice();
-  answer = setOptions(choices);
-}
-
 function stats(){
   story("Here are your stats.");
   let statsBox = document.getElementById("modalBox");
@@ -129,17 +123,44 @@ function stats(){
   close.innerHTML="Close";
   statsBox.appendChild(close);
   statsBox.style.display = "block";
+  picker();
 }
+
+function picker(){
+  let addStory="Go pick your class! Here's what to know about your options:<br><ul style=\"text-align:left;\">";
+  choices = classOptions();
+  for (let choice=0; choice < choices.length; choice++){
+    addStory+="<li>If you choose "+choices[choice]+ " you .... FILL IN HERE</li>";
+  }
+  addStory+="<ul";
+  story(addStory);
+  answer = setOptions(choices);
+}
+
+/* Function Class Options
+ * @param none (attributes is global)
+ * @return classList array
+ * This function references a list of classes
+ * And selects those that match the requirements
+ * Based on the player's rolled attributes
+ * attributes = attribute, current value
+ * classReq = attributes[index], minimum value to qualify, classes[index]
+ */
+function classOptions(){
+  let classList = []; 
+  for (let att6 = 0; att6 < attributes.length; att6++ ){
+    if (attributes[att6][1] >= classReq[att6][1]){
+      classList.push(classes[classReq[att6][2]][0]);
+    }
+  }
+  return classList;
+}
+
+
 
 function hideModal() {
   let statsBox = document.getElementById("modalBox");
   statsBox.style.display = "none";
-}
-
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
 }
 
 function reStart(){
