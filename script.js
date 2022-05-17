@@ -11,69 +11,6 @@ function pickAttribute(){
   rollBox.innerHTML=random();  
 }
 
-/* Function Keep
- * Pulls dice roll value from page to save in array.
- * Then rolls next attribute. 
- * @param none
- * @return none
- */
-function keepOld(){
-  if (rollCount > maxRolls){
-      rollButton.innerText = "No Rerolls Left";
-  }
-  let sum = parseInt(document.getElementById("roll").innerText);
-  attributes[whichAttribute][1] = sum;
-  alert("Your "+ attributes[whichAttribute][0] + " is now "+ attributes[whichAttribute][1]);
-  if (whichAttribute == 5) {
-    stats();
-  }
-  else {
-    whichAttribute++;
-    pickAttribute();
-  }
-}
-
-/* Function Keep
- * Pulls dice roll value from page to save in array.
- * Then rolls next attribute. 
- * @param none
- * @return random integer 3 to 18
- */
-function randomOLD(){
-  let sum = 0;
-  for (let roll = 1; roll <= 3; roll ++){
-    let rolled = Math.floor(Math.random()*6)+1;
-    sum += rolled;
-  }
-  return sum;
-}
-
-/* Function reRoll
- * Re-calls Pick Attribute without advancing attribute
- * Then rolls next attribute. 
- * @param none
- * @return random integer 3 to 18
- */
-function reRoll(){
-  rollCount++;
-  if (rollCount < maxRolls){
-    rollButton.innerText = "Reroll "+rollCount+" of "+maxRolls;
-    pickAttribute();
-  }
-  else if (rollCount == maxRolls){
-    rollButton.innerText = "No Rerolls Left";
-    pickAttribute();
-  }
-  else {
-    rollButton.innerText = "No Rerolls Left";
-    keep();
-  }
-}
-
-function allDone(){
-  alert("All Done with your stats");
-}
-
 function stats(){
   document.body.innerHTML="<h1>Your Character Stats</h1>"
   var statTable = document.createElement("table");
@@ -96,7 +33,7 @@ function allDone(){
   alert("All Done with your stats");
 }
 
-function stats() {
+function stats-old() {
   document.body.innerHTML="<h1>Your Character Stats</h1>";
   var statTable = document.createElement("table");
   var labels = statTable.insertRow();
@@ -123,6 +60,7 @@ function stats() {
  * attributes = attribute, current value
  * classReq = attributes[index], minimum value to qualify, classes[index]
  */
+
 function classOptions(){
   let classList = []; //Gives the possible characters(classes) we could be, Christan Bale, Ben Affleck
   let strengthRoll = attributes[0][1];

@@ -2,7 +2,7 @@ body {
   background: black url("https://i.ytimg.com/vi/TUYx0wf8-h0/maxresdefault.jpg") center 25px no-repeat;
 }
 
-p, #choices, button {
+p, #choices, #button1 {
   font-family: Garamond;
   font-size: 25px;
   background-color: white;
@@ -26,7 +26,7 @@ p, #choices, button {
   text-align: center;
 }
 
-select, button {
+select, #button1 {
   width: 95%;
   font-size: 25px;
   padding-top: 0px;
@@ -35,15 +35,15 @@ select, button {
   text-align: center;
 }
 
-button {
+#button1 {
   height: 3em;
 }
 
-button:hover, #choices:hover {
+#button1:hover, #choices:hover {
   background-color: #add8e6;
 }
 
-button:active, #choices:active {
+#button1:active, #choices:active {
   background-color: mistyrose;
 }
 
@@ -76,4 +76,49 @@ th {
 }
 td {
   font-size: 24pt;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto; 
+  width: 600px; /* Full width */
+  height: 400px; /* Full height */
+  overflow: hidden; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  /* background-color: rgba(0,0,0,0.4); /* Black w/ opacity */ 
+  background-color: white;
+  border: 1px solid blue;
+  text-align: center;
+  padding-bottom: 50px;
+
+}
+
+/* Modal Content/Box */
+#modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }

@@ -26,12 +26,12 @@ function checkAnswers(answer) {
     case "Reroll":
       reroll();
       break;
-    /* case "Next Attribute":
-      next();
-      break;*/
-    /* case "Start Over":
+    case "See Stats":
+      stats();
+      break;
+    case "Start Over":
       restart();
-      break;*/
+      break;
     }
 }
 
@@ -59,28 +59,41 @@ function random(){
   return sum;
 }
 
-
+/* Function Keep
+ * Pulls dice roll value from page to save in array.
+ * Then rolls next attribute. 
+ * @param none
+ * @return none
+ */
 function keep(){
   let add2Story = "Your "+attribute+" is now "+roll+".\n<br>";
   attributes[whichAttribute][1]=roll;
   roll = random();
-  whichAttribute++;
-  attribute = attributes[whichAttribute][0];
-  add2Story+=("You rolled a "+roll+" for "+attribute+".");
-  story(add2Story);
-  choices = ["Keep", "Reroll"];
-  answer = setOptions(choices);
+  if (whichAttribute < 5) {
+    whichAttribute++;
+    attribute = attributes[whichAttribute][0];
+    add2Story+=("You rolled a "+roll+" for "+attribute+".");
+    story(add2Story);
+    choices = ["Keep", "Reroll"];
+    answer = setOptions(choices);
+  }
+  else {
+    story("Your character rolls are complete.  Let's see what they were.");
+    choices = ["See Stats", "Start Over"];
+    answer = setOptions(choices);
+  }
 }
 
 function reroll(){
   rollCount++;
   let rollsLeft = maxRolls - rollCount;
   if (rollsLeft<1){
-    story("You have no rerolls left.  Select KEEP.");
+    story("You rolled a "+ roll+". You have no rerolls left.  Select KEEP.");
     choices = ["Keep","No Rerolls Left"];
   }
   else {
     roll = random();
+    console.log(roll);
     story("You rolled a "+roll+" for "+attribute+". You have "+rollsLeft+" rerolls left.");
     choices = ["Keep","Reroll"];
   }
@@ -91,6 +104,42 @@ function picker(){
   story("");
   choices = classes.slice();
   answer = setOptions(choices);
+}
+
+function stats(){
+  story("Here are your stats.");
+  let statsBox = document.getElementById("modalBox");
+  let statsText = document.getElementById("modalText");
+  statsText.innerHTML="<h1>Your Character Stats</h1>"
+  var statTable = document.createElement("table");
+  var labels = statTable.insertRow();
+  for (let thead = 0; thead < 6; thead++){
+    var th1 = document.createElement("th");
+    th1.innerHTML = attributes[thead][0];
+    labels.appendChild(th1);
+  }
+  var values = statTable.insertRow();
+  for (let tcell = 0; tcell < 6; tcell++){
+    var Cell = values.insertCell();
+    Cell.innerHTML = attributes[tcell][1];
+  }
+  statsText.appendChild(statTable);
+  let close = document.createElement("button");
+  close.setAttribute("onClick","hideModal()");
+  close.innerHTML="Close";
+  statsBox.appendChild(close);
+  statsBox.style.display = "block";
+}
+
+function hideModal() {
+  let statsBox = document.getElementById("modalBox");
+  statsBox.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
 }
 
 function reStart(){
