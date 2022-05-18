@@ -79,14 +79,15 @@ function keep(){
 }
 
 function reroll(){
-  rollCount++;
+  rollCount++; 
   roll = random();
   let rollsLeft = maxRolls - rollCount;
-  story("You rolled a "+roll+" for "+attribute+". You have "+rollsLeft+" rerolls left.");
-  if (rollsLeft<1){
+  if (rollsLeft < 1){
+    story("You have no more rerolls left, Select KEEP.")
     choices = ["Keep","No Rerolls Left"];
   }
   else {
+    story("You rolled a "+roll+" for "+attribute+". You have "+rollsLeft+" rerolls left.");
     choices = ["Keep","Reroll"];
   }
   answer = setOptions(choices);
@@ -98,7 +99,7 @@ function picker(){
   answer = setOptions(choices);
 }
 
-function reStart(){
+function restart(){
   story("Sorry, you don't get to keep restarting until you get great rolls!");
   choices = ["Go into the forest", "Ignore it and go home"];
   answer = setOptions(choices);
