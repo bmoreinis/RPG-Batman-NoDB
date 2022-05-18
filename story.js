@@ -32,25 +32,25 @@ function checkAnswers(answer) {
     case "Start Over":
       restart();
       break;
-    case "Melee Stub Text":
+    case "Engage Melee":
       toMelee();
       break;
-      case: "Christian Bale":
+    case "Christian Bale":
       toMelee();
       break;
-    case: "Ben Affleck":
+    case "Ben Affleck":
       toMelee();
       break;
-    case: "Robert Pattinson":
+    case "Kevin Conroy":
       toMelee();
       break;
-    case: "Michael Keaton":
+    case "Will Arnett":
       toMelee();
       break;
-    case: "Kevin Conroy":
+    case "Robert Pattinson":
       toMelee();
       break;
-    case: "Will Arnett":
+    case "Michael Keaton":
       toMelee();
       break;
     }
@@ -185,8 +185,8 @@ function hideModal() {
   statsBox.style.display = "none";
 }
 
-function restart(){
-  story("Sorry, you don't get to keep restarting until you get great rolls!");
+function toMelee(){
+  story("Sorry, you don't get to keep toMeleeing until you get great rolls!");
   choices = ["Go into the forest", "Ignore it and go home"];
   answer = setOptions(choices);
 }
