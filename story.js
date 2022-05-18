@@ -32,6 +32,27 @@ function checkAnswers(answer) {
     case "Start Over":
       restart();
       break;
+    case "Melee Stub Text":
+      toMelee();
+      break;
+      case: "Christian Bale":
+      toMelee();
+      break;
+    case: "Ben Affleck":
+      toMelee();
+      break;
+    case: "Robert Pattinson":
+      toMelee();
+      break;
+    case: "Michael Keaton":
+      toMelee();
+      break;
+    case: "Kevin Conroy":
+      toMelee();
+      break;
+    case: "Will Arnett":
+      toMelee();
+      break;
     }
 }
 
@@ -164,8 +185,15 @@ function hideModal() {
   statsBox.style.display = "none";
 }
 
-function reStart(){
+function restart(){
   story("Sorry, you don't get to keep restarting until you get great rolls!");
   choices = ["Go into the forest", "Ignore it and go home"];
+  answer = setOptions(choices);
+}
+
+function toMelee(){
+  document.location = 'melee.html';
+  story("You are face to face with the Joker.");
+  choices = ["Fight Him","Run Away","Ask Robin"];
   answer = setOptions(choices);
 }
