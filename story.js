@@ -26,11 +26,17 @@ function checkAnswers(answer) {
     case "Reroll":
       reroll();
       break;
-    case "See Stats":
+    case "See Stats and Pick Character":
       stats();
       break;
     case "Start Over":
       restart();
+      break;
+    case "Just let me see the stats":
+      stats();
+      break;
+    case "Restart Anyways":
+      stats();
       break;
     case "Christian Bale":
       toMelee();
@@ -49,15 +55,6 @@ function checkAnswers(answer) {
       break;
     case "Michael Keaton":
       toMelee();
-      break;
-    case "Fight Him":
-      round();
-      break;
-    case "Run Away":
-      runAway();
-      break;
-    case "Ask Robin":
-      robinMelee();
       break;
     }
 }
@@ -106,7 +103,7 @@ function keep(){
   }
   else {
     story("Your character rolls are complete.  Let's see what they were.");
-    choices = ["See Stats", "Start Over"];
+    choices = ["See Stats and Pick Character", "Start Over"];
     answer = setOptions(choices);
   }
 }
@@ -192,7 +189,7 @@ function hideModal() {
 }
 
 function restart(){
-  story("Sorry, you don't get to keep toMeleeing until you get great rolls!");
+  story("Sorry, you don't get to keep restarting until you get great rolls!");
   choices = ["Go into the forest", "Ignore it and go home"];
   answer = setOptions(choices);
 }
