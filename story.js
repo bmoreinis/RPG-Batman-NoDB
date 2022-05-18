@@ -12,7 +12,8 @@ var attributes = [["Strength",0],["Intelligence",0],["Wisdom",0],["Constitution"
 // classReq = attributes[index], minimum value to qualify, classes[index]
 var classReq = [[0,13,0],[1,14,1],[2,9,2],[3,11,3],[4,10,4],[5,12,5]];
 var classes = [["Christian Bale",["Batman Begins", "The Dark Night"],"One Punch Knockout"],["Robert Pattinson",["The Batman 2020"],"Knows All The Answers"],["Michael Keaton",["Batman 1989"],"Predicts Villain Behaviors"],["Will Arnett",["Lego Batman: The Movie"],"No Fall Damage"],["Ben Affleck",["Batman vs. Superman"],"Can Escape Any Room"],["Kevin Conroy",["Batman: The Killing Joke"],"Soul Catching Voice"]];
-var choices = [];
+var classList = []; // which classes can we pick?
+var choices = []; // what are our scene choices?
 var maxRolls = 3; // how many rerolls? Default = 3
 var rollCount = 0; // which reroll are we on?
 
@@ -86,12 +87,16 @@ function reroll(){
   rollCount++;
   let rollsLeft = maxRolls - rollCount;
   if (rollsLeft<1){
-    story("You rolled a "+ roll+". You have no rerolls left.  Select KEEP.");
+    roll = random();
+    story("You rolled a "+ roll+". That was your last reroll.  Select KEEP.");
     choices = ["Keep","No Rerolls Left"];
+  }
+  else if (rollsLeft<0){
+    story("Sorry, you're stuck with your"+ roll+". You have no rerolls left.");
+    choices = ["Keep"];
   }
   else {
     roll = random();
-    console.log(roll);
     story("You rolled a "+roll+" for "+attribute+". You have "+rollsLeft+" rerolls left.");
     choices = ["Keep","Reroll"];
   }
@@ -124,17 +129,6 @@ function stats(){
   picker();
 }
 
-function picker(){
-  let addStory="Go pick your class! Here's what to know about your options:<br><ul style=\"text-align:left;\">";
-  choices = classOptions();
-  for (let choice=0; choice < choices.length; choice++){
-    addStory+="<li>If you choose "+choices[choice]+ " you .... FILL IN HERE</li>";
-  }
-  addStory+="<ul";
-  story(addStory);
-  answer = setOptions(choices);
-}
-
 /* Function Class Options
  * @param none (attributes is global)
  * @return classList array
@@ -145,15 +139,44 @@ function picker(){
  * classReq = attributes[index], minimum value to qualify, classes[index]
  */
 function classOptions(){
-  let classList = []; 
+  classList = []; 
   for (let att6 = 0; att6 < attributes.length; att6++ ){
     if (attributes[att6][1] >= classReq[att6][1]){
-      classList.push(classes[classReq[att6][2]][0]);
+      /* classList.push(classes[classReq[att6][2]][0]); */
+      classList.push(att6);
     }
   }
   return classList;
 }
 
+function picker(){
+  classList = classOptions();
+  let classData = getClassData(classList);
+  let addStory="Which Batman shall you be?  Here are your options based on your rolls:<br><ul style=\"text-align:left;\">";
+  for (let choice=0; choice < classData.length; choice++){
+    addStory+="<li> "+classData[choice][0]+ ": <button>About</button>";
+  }
+  addStory+="</ul>";
+  story(addStory);
+  choices = getClassData(classList,0);
+  answer = setOptions(choices);
+}
+
+
+function getClassData(array1,field){
+  let classData = [];
+  if (typeof field === "undefined") {
+    for (let option = 0; option < array1.length; option++){
+    classData.push(classes[array1[option]]);
+    }
+  }
+  else {
+    for (let option = 0; option < array1.length; option++){
+     classData.push(classes[array1[option]][field]);
+    }
+  }
+  return classData;
+}
 
 
 function hideModal() {
