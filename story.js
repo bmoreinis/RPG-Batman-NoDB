@@ -32,9 +32,6 @@ function checkAnswers(answer) {
     case "Start Over":
       restart();
       break;
-    case "Engage Melee":
-      toMelee();
-      break;
     case "Christian Bale":
       toMelee();
       break;
@@ -52,6 +49,15 @@ function checkAnswers(answer) {
       break;
     case "Michael Keaton":
       toMelee();
+      break;
+    case "Fight Him":
+      round();
+      break;
+    case "Run Away":
+      runAway();
+      break;
+    case "Ask Robin":
+      robinMelee();
       break;
     }
 }
@@ -185,7 +191,7 @@ function hideModal() {
   statsBox.style.display = "none";
 }
 
-function toMelee(){
+function restart(){
   story("Sorry, you don't get to keep toMeleeing until you get great rolls!");
   choices = ["Go into the forest", "Ignore it and go home"];
   answer = setOptions(choices);
