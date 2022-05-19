@@ -25,11 +25,35 @@ function checkAnswers(answer) {
     case "Reroll":
       reroll();
       break;
-    case "See Stats":
+    case "See Stats and Pick Character":
       stats();
       break;
     case "Start Over":
       restart();
+      break;
+    case "Just let me see the stats":
+      stats();
+      break;
+    case "Restart Anyways":
+      stats();
+      break;
+    case "Christian Bale":
+      toMelee();
+      break;
+    case "Ben Affleck":
+      toMelee();
+      break;
+    case "Kevin Conroy":
+      toMelee();
+      break;
+    case "Will Arnett":
+      toMelee();
+      break;
+    case "Robert Pattinson":
+      toMelee();
+      break;
+    case "Michael Keaton":
+      toMelee();
       break;
     }
 }
@@ -78,7 +102,7 @@ function keep(){
   }
   else {
     story("Your character rolls are complete.  Let's see what they were.");
-    choices = ["See Stats", "Start Over"];
+    choices = ["See Stats and Pick Character", "Start Over"];
     answer = setOptions(choices);
   }
 }
@@ -185,8 +209,15 @@ function hideModal() {
   statsBox.style.display = "none";
 }
 
-function reStart(){
+function restart(){
   story("Sorry, you don't get to keep restarting until you get great rolls!");
   choices = ["Go into the forest", "Ignore it and go home"];
+  answer = setOptions(choices);
+}
+
+function toMelee(){
+  document.location = 'melee.html';
+  story("You are face to face with the Joker.");
+  choices = ["Fight Him","Run Away","Ask Robin"];
   answer = setOptions(choices);
 }
