@@ -150,7 +150,7 @@ function picker(){
   let classData = getClassData(classList);
   let addStory="Which Batman shall you be?  Here are your options based on your rolls:<br><ul style=\"text-align:left;\">";
   for (let choice=0; choice < classData.length; choice++){
-    addStory+="<li> "+classData[choice][0]+ ": <button onclick=\"showClassData("+choice+");\">About</button>";
+    addStory+="<li> "+classData[choice][0]+ ": <button onclick=\"showClassData("+classList[choice]+");\">About</button>";
   }
   addStory+="</ul>";
   story(addStory);
