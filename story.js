@@ -150,7 +150,7 @@ function picker(){
   let classData = getClassData(classList);
   let addStory="Which Batman shall you be?  Here are your options based on your rolls:<br><ul style=\"text-align:left;\">";
   for (let choice=0; choice < classData.length; choice++){
-    addStory+="<li> "+classData[choice][0]+ ": <button onclick=\"showClassData();\">About</button>";
+    addStory+="<li> "+classData[choice][0]+ ": <button onclick=\"showClassData("+choice+");\">About</button>";
   }
   addStory+="</ul>";
   story(addStory);
@@ -158,10 +158,17 @@ function picker(){
   answer = setOptions(choices);
 }
 
-function showClassData(){
+function classButton(classID){
+  let classArray = classes[classID];
+  let classDescription = "Name: " + classArray[0]+" <br>";
+  classDescription += "Batman Movies: " + classArray[1].toString() +" <br>";;
+  return classDescription;
+}
+
+function showClassData(classID){
   let statsBox = document.getElementById("modalBox");
   let statsText = document.getElementById("modal-content");
-  statsText.innerHTML="<h1>About This Batman</h1>"
+  statsText.innerHTML=classButton(classID);
   statsBox.style.display = "block";
 }
 
