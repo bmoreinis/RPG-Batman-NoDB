@@ -16,6 +16,7 @@ var classList = []; // which classes can we pick?
 var choices = []; // what are our scene choices?
 var maxRolls = 3; // how many rerolls? Default = 3
 var rollCount = 0; // which reroll are we on?
+var modalText = "Houston, we have a problem defining modalText";
 
 function checkAnswers(answer) {
   switch(answer) {
@@ -103,6 +104,12 @@ function reroll(){
   answer = setOptions(choices);
 }
 
+function reStart(){
+  story("Sorry, you don't get to keep restarting until you get great rolls!");
+  choices = ["Go into the forest", "Ignore it and go home"];
+  answer = setOptions(choices);
+}
+
 function stats(){
   story("Here are your stats.");
   let statsBox = document.getElementById("modalBox");
@@ -150,7 +157,8 @@ function picker(){
   let classData = getClassData(classList);
   let addStory="Which Batman shall you be?  Here are your options based on your rolls:<br><ul style=\"text-align:left;\">";
   for (let choice=0; choice < classData.length; choice++){
-    addStory+="<li> "+classData[choice][0]+ ": <button onclick=\"showClassData("+classList[choice]+");\">About</button>";
+    modalText = classDescription(classList[choice]);
+    addStory+="<li> "+classData[choice][0]+ ": <button onclick=\"showModal(modalText);\">About</button>";
   }
   addStory+="</ul>";
   story(addStory);
@@ -158,20 +166,12 @@ function picker(){
   answer = setOptions(choices);
 }
 
-function classButton(classID){
+function classDescription(classID){
   let classArray = classes[classID];
-  let classDescription = "Name: " + classArray[0]+" <br>";
-  classDescription += "Batman Movies: " + classArray[1].toString() +" <br>";;
-  return classDescription;
+  let classDesc = "Name: " + classArray[0]+" <br>";
+  classDesc += "Batman Movies: " + classArray[1].toString() +" <br>";;
+  return classDesc;
 }
-
-function showClassData(classID){
-  let statsBox = document.getElementById("modalBox");
-  let statsText = document.getElementById("modal-content");
-  statsText.innerHTML=classButton(classID);
-  statsBox.style.display = "block";
-}
-
 
 function getClassData(array1,field){
   let classData = [];
@@ -188,13 +188,3 @@ function getClassData(array1,field){
   return classData;
 }
 
-function hideModal() {
-  let statsBox = document.getElementById("modalBox");
-  statsBox.style.display = "none";
-}
-
-function reStart(){
-  story("Sorry, you don't get to keep restarting until you get great rolls!");
-  choices = ["Go into the forest", "Ignore it and go home"];
-  answer = setOptions(choices);
-}
