@@ -121,10 +121,6 @@ function stats(){
     Cell.innerHTML = attributes[tcell][1];
   }
   statsText.appendChild(statTable);
-  let close = document.createElement("button");
-  close.setAttribute("onClick","hideModal()");
-  close.innerHTML="Close";
-  statsBox.appendChild(close);
   statsBox.style.display = "block";
   picker();
 }
@@ -154,12 +150,19 @@ function picker(){
   let classData = getClassData(classList);
   let addStory="Which Batman shall you be?  Here are your options based on your rolls:<br><ul style=\"text-align:left;\">";
   for (let choice=0; choice < classData.length; choice++){
-    addStory+="<li> "+classData[choice][0]+ ": <button>About</button>";
+    addStory+="<li> "+classData[choice][0]+ ": <button onclick=\"showClassData();\">About</button>";
   }
   addStory+="</ul>";
   story(addStory);
   choices = getClassData(classList,0);
   answer = setOptions(choices);
+}
+
+function showClassData(){
+  let statsBox = document.getElementById("modalBox");
+  let statsText = document.getElementById("modal-content");
+  statsText.innerHTML="<h1>About This Batman</h1>"
+  statsBox.style.display = "block";
 }
 
 
@@ -178,10 +181,8 @@ function getClassData(array1,field){
   return classData;
 }
 
-
 function hideModal() {
   let statsBox = document.getElementById("modalBox");
-  statsBox.removeChild(statsBox.lastChild);
   statsBox.style.display = "none";
 }
 
