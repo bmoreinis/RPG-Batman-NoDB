@@ -2,7 +2,7 @@ body {
   background: black url("https://i.ytimg.com/vi/TUYx0wf8-h0/maxresdefault.jpg") center 25px no-repeat;
 }
 
-p, #choices, #button1 {
+p, #choices, #button1, #button2 {
   font-family: Garamond;
   font-size: 25px;
   background-color: white;
@@ -121,4 +121,33 @@ td {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+#sKDiv{
+  float: right;
+}
+
+select, #button2 {
+  width: 95%;
+  font-size: 25px;
+  padding-top: 0px;
+  margin: 2px 19px 9px 19px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+#button2 {
+  height: 3em;
+}
+
+#button2:hover, #choices:hover {
+  background-color: #add8e6;
+}
+
+#button2:active, #choices:active {
+  background-color: mistyrose;
+}
+
+.line{
+  margin-left: none;
 }
