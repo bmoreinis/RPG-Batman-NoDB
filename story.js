@@ -158,7 +158,8 @@ function picker(){
   let classData = getClassData(classList);
   let addStory="Which Batman shall you be?  Here are your options based on your rolls:<br><ul style=\"text-align:left;\">";
   for (let choice=0; choice < classData.length; choice++){
-    classText.push(classDescription(classList[choice]));
+    modalText = classDescription(classList[choice]);
+    classText.push(modalText);
     addStory+="<li> "+classes[classList[choice]][0]+ ": <button onclick=\"showModal(classText["+choice+"]);\">About</button>";
   }
   addStory+="</ul>";
