@@ -19,7 +19,7 @@ var rollCount = 0; // which reroll are we on?
 var button2;
 var currentStoryElement = document.getElementById("currentStory");
 var sKModalArray = ["sKAbout(0)","sKAbout(1)","sKAbout(2)","sKAbout(3)","sKAbout(4)","sKAbout(5)","sKAbout(6)","sKAbout(7)","sKAbout(8)","sKAbout(9)","sKAbout(10)","sKAbout(11)",];
-var sKBio = ["","","","In the care of her uncle James Gordon, Barbara was interested in justice and obsessed with Batman. With approval from James, she learned self-defense and jujitsu. She was rejected enrollment into the police academy by James, and also rejected by the FBI. She decided to create a feminine Batman costume to spite James. During her first appearance, she was faced with Killer Moth and his goons. Although bested by Killer moth, Barbara persevered, and help Batman and Robin take down the rest of the criminals who escaped. Batgirl is now a trusted member of the Bat-family.","","","","","","","",""];
+var sKBio = ["Alfred worked as the butler for the Wayne family. When Thomas and Martha Wayne were killed, Alfred took up the responsibility of being Bruce Wayne's guardian. Since learning that Bruce became Batman, Alfred has provided tech and medical support to him, as well as the ever growing Bat-family. Alfred may be Batman's most trusted ally.","Richard Grayson was a young circus acrobat in the family act \"The Flying Graysons.\"  His parents were killed in a sabotaged act, and Bruce Wayne adopted him in empathy. When Richard discovered that Bruce was Batman, Bruce saw their same desire to get justice, and offered him the chance to be his partner. Richard chose the alias Robin, his mothers nickname for him. The first Robin, the Boy Wonder, used Batman's combat and detective skills, as well as his own acrobatic skills, to help fight crime in Gotham City.","Ace the dog was separated from his owner, John Wilker, during a gang attack, and was rescued by Batman and Robin. The duo went to rescue Wilker, and Ace followed, leading to him assisting the heroes in finding and taking down the gang, and even saving them from capture. Wilker, finding a new job and unable to take care of Ace, left him with Bruce Wayne. The dependable \"Bat-Hound\" continued to assist Batman and Robin in crime fighting.","In the care of her uncle James Gordon, Barbara was interested in justice and obsessed with Batman. With approval from James, she learned self-defense and jujitsu. She was rejected enrollment into the police academy by James, and also rejected by the FBI. She decided to create a feminine Batman costume to spite James. During her first appearance, she was faced with Killer Moth and his goons. Although bested by Killer moth, Barbara persevered, and help Batman and Robin take down the rest of the criminals who escaped. Batgirl is now a trusted member of the Bat-family.","","","","","","","",""];
 //var modalText = "Houston, we have a problem defining modalText";
 function checkAnswers(answer) {
   switch(answer) {
@@ -350,7 +350,7 @@ function sKClassOptions(){
 function sKAbout(id){
   let statsBox = document.getElementById("modalBox");
   let statsText = document.getElementById("modalText");
-  statsText.innerHTML="<h1>"+classes[id][0]+"</h1>";
+  statsText.innerHTML="<h1>"+classes[id][0]+"</h1>"+sKBio[id];
   statsBox.style.display = "block";
   let close = document.createElement("button");
   close.setAttribute("onClick","hideModal()");
