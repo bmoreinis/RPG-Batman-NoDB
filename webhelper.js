@@ -14,6 +14,18 @@ function start() {
   scene1();
 }
 
+function showModal(htmlData){
+  let statsBox = document.getElementById("modalBox");
+  let statsText = document.getElementById("modal-content");
+  statsText.innerHTML = htmlData;
+  statsBox.style.display = "block";
+}
+
+function hideModal() {
+  let statsBox = document.getElementById("modalBox");
+  statsBox.style.display = "none";
+}
+
 function addImage(imageURL){
   let image = document.createElement("img");
   image.src = imageURL;
