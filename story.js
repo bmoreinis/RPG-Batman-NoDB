@@ -17,6 +17,7 @@ var choices = []; // what are our scene choices?
 var maxRolls = 3; // how many rerolls? Default = 3
 var rollCount = 0; // which reroll are we on?
 var modalText = "Houston, we have a problem defining modalText";
+let classText = [];
 
 function checkAnswers(answer) {
   switch(answer) {
@@ -157,8 +158,8 @@ function picker(){
   let classData = getClassData(classList);
   let addStory="Which Batman shall you be?  Here are your options based on your rolls:<br><ul style=\"text-align:left;\">";
   for (let choice=0; choice < classData.length; choice++){
-    modalText = classDescription(classList[choice]);
-    addStory+="<li> "+classData[choice][0]+ ": <button onclick=\"showModal(modalText);\">About</button>";
+    classText.push(classDescription(classList[choice]));
+    addStory+="<li> "+classes[classList[choice]][0]+ ": <button onclick=\"showModal(classText["+choice+"]);\">About</button>";
   }
   addStory+="</ul>";
   story(addStory);
@@ -167,9 +168,8 @@ function picker(){
 }
 
 function classDescription(classID){
-  let classArray = classes[classID];
-  let classDesc = "Name: " + classArray[0]+" <br>";
-  classDesc += "Batman Movies: " + classArray[1].toString() +" <br>";;
+  let classDesc = "Name: " + classes[parseInt(classID)][0]+" <br>";
+  classDesc += "Batman Movies: " + classes[parseInt(classID)][1].toString() +" <br>";
   return classDesc;
 }
 
