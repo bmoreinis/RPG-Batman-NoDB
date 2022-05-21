@@ -21,6 +21,9 @@ var currentStoryElement = document.getElementById("currentStory");
 var sKModalArray = ["sKAbout(0)","sKAbout(1)","sKAbout(2)","sKAbout(3)","sKAbout(4)","sKAbout(5)","sKAbout(6)","sKAbout(7)","sKAbout(8)","sKAbout(9)","sKAbout(10)","sKAbout(11)",];
 var sKBio = ["","","In the care of her uncle James Gordon, Barbara was interested in justice and obsessed with Batman. With approval from James, she learned self-defense and jujitsu. She was rejected enrollment into the police academy by James, and also rejected by the FBI. She decided to create a feminine Batman costume to spite James. During her first appearance, she was faced with Killer Moth and his goons. Although bested by Killer moth, Barbara persevered, and help Batman and Robin take down the rest of the criminals who escaped. Batgirl is now a trusted member of the Bat-family.","","","","","","","","",""]
 //var modalText = "Houston, we have a problem defining modalText";
+var modalText = "Houston, we have a problem defining modalText";
+let classText = [];
+
 function checkAnswers(answer) {
   switch(answer) {
     case "Keep":
@@ -161,7 +164,8 @@ function picker(){
   let addStory="Which Batman shall you be?  Here are your options based on your rolls:<br><ul style=\"text-align:left;\">";
   for (let choice=0; choice < classData.length; choice++){
     modalText = classDescription(classList[choice]);
-    addStory+="<li> "+classData[choice][0]+ ": <button onclick=\"showModal(modalText);\">About</button>";
+    classText.push(modalText);
+    addStory+="<li> "+classes[classList[choice]][0]+ ": <button onclick=\"showModal(classText["+choice+"]);\">About</button>";
   }
   addStory+="</ul>";
   story(addStory);
@@ -170,9 +174,8 @@ function picker(){
 }
 
 function classDescription(classID){
-  let classArray = classes[classID];
-  let classDesc = "Name: " + classArray[0]+" <br>";
-  classDesc += "Batman Movies: " + classArray[1].toString() +" <br>";;
+  let classDesc = "Name: " + classes[parseInt(classID)][0]+" <br>";
+  classDesc += "Batman Movies: " + classes[parseInt(classID)][1].toString() +" <br>";
   return classDesc;
 }
 
