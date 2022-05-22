@@ -211,8 +211,8 @@ function reStart(){
 function sKSetup(){
   document.getElementById("sKSwitch").remove();
   classes = [["Jason Todd",["Robin","Red Hood","Wingman"],"undefined"],["Terry McGinnis",["Batman Beyond"],"undefined"],["Barbara Gordon",["Batgirl","Oracle"],"undefined"],["Stephanie Brown",["Spoiler","Robin","Batgirl"],"undefined"],["Tim Drake",["Robin","Red Robin"],"undefined"],["Cassandra Cain",["Batgirl","Black Bat"],null],["Ace",["Bat-Hound"],null],["Katherine Kane",["Batwoman"],null],["Richard Grayson",["Robin","Nightwing"],null],["Damian Wayne",["Robin","Redbird"],null],["Alfred Pennyworth",["Penny-one"],null],["Elizabeth Kane",["Batgirl"],null]];
-  //classReq = [[0,14,0],[0,12,0],[1,13,0],[1,11,0],[2,11,0],[2,14,0],[3,13,0],[3,10,0],[4,13,0],[4,12,0],[5,15,0],[5,11,0]];
-  classReq = [[0,1,0],[0,1,0],[1,1,0],[1,1,0],[2,1,0],[2,1,0],[3,1,0],[3,1,0],[4,1,0],[4,1,0],[5,1,0],[5,1,0]];
+  classReq = [[0,14,0],[0,12,0],[1,13,0],[1,11,0],[2,11,0],[2,14,0],[3,13,0],[3,10,0],[4,13,0],[4,12,0],[5,15,0],[5,11,0]];
+  //classReq = [[0,1,0],[0,1,0],[1,1,0],[1,1,0],[2,1,0],[2,1,0],[3,1,0],[3,1,0],[4,1,0],[4,1,0],[5,1,0],[5,1,0]];
   whichAttribute = -1;
   rollCount = 0;
   story("");
