@@ -151,3 +151,108 @@ select, #button2 {
 .line{
   margin-left: none;
 }
+
+.image{
+  height: 100%;
+  width: 200px;
+  margin-left: 20px;
+  background: no-repeat;
+  display: inline-block;
+  align-self: center;
+  object-fit: contain;
+}
+
+#Jason{
+  background-image: url(Jason.jpg);
+}
+
+#RedHood{
+  background-image: url("Red Hood.jpg");
+}
+
+#Wingman{
+  background-image: url("Wingman.jpg");
+}
+
+#imageBox{
+  width: 100%;
+  height: 200px;
+  align-content: center;
+}
+
+#Terry{
+  background-image: url("Batman Terry.jpg");
+  width: 300px;
+}
+
+#Barbara{
+  background-image: url("Batgirl Barbara.png");
+}
+
+#Oracle{
+  background-image: url("Oracle.jpg");
+  width: 300px;
+}
+
+#Spoiler{
+  background-image: url("Spoiler.jpg");
+}
+
+#StephR{
+  background-image: url("Robin Steph.jpg");
+}
+
+#StephB{
+  background-image: url("Batgirl Steph.jpg");
+}
+
+#Tim{
+  background-image: url("Robin Tim.jpg");
+}
+
+#RedRobin{
+  background-image: url("Red Robin.jpg");
+}
+
+#Cassandra{
+  background-image: url("Batgirl Cassandra.jpg");
+}
+
+#BlackBat{
+  background-image: url("Black Bat.jpg");
+}
+
+#Ace{
+  background-image: url("Bat-Hound.jpg");
+}
+
+#Kathy{
+  background-image: url("Batwoman.jpg");
+  width: 300px;
+}
+
+#Richard{
+  background-image: url("Robin Richard.jpg");
+}
+
+#Nightwing{
+  background-image: url("Nightwing.png");
+}
+
+#Damien{
+  background-image: url("Robin Damian.jpg");
+}
+
+#Redbird{
+  background-image: url("Redbird.jpg");
+}
+
+#Alfred{
+  background-image: url("Alfred.jpg");
+}
+
+#Betty{
+  background-image: url("Batgirl Betty.jpg");
+}
+
+/*["Ace"],["Kathy"],["Richard","Nightwing"],["Damien","Redbird"],["Alfred"],["Betty"]]*/
