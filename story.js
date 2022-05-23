@@ -315,6 +315,7 @@ function sKPicker(){
   classList = sKClassOptions();
   let classData = getClassData(classList);
   let addStory="Who will be your sidekick?  Here are your options based on your rolls:<br><ul style=\"text-align:left;\">";
+  story(addStory);
   for (let choice=0; choice < classData.length; choice++){
     addStory+="<li> "+classData[choice][0];
     let about = document.createElement("button");
